@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/dashboard}">
+<head>
+    
+    <title>Form Layout - Voler Admin Dashboard</title>
+   
+</head>
+<body>
+    
+<div class="main-content container-fluid" layout:fragment="content">
+
+	
+	
+	<!-- <h1>Editer le privilège</h1>
+        <br />
+        <form action="#" th:action="@{/saveAction}" th:object="${action}"
+            method="post">
+ 
+            <table border="0" cellpadding="10">
+                <tr>             
+                    <td>ACTION ID:</td>
+                    <td>
+                        <input type="text" th:field="*{id}" readonly="readonly" />
+                    </td>
+                </tr>        
+                <tr>             
+                    <td>Privilège :</td>
+                    <td>
+                        <input type="text" th:field="*{actionName}" />
+                    </td>
+                </tr>
+               
+                                            
+                <tr>
+                    <td >
+                    <a th:href="@{/listActions}">
+                    <button type="button">Cancel</button>
+                	</a>
+                    <button type="submit">Save</button> </td>
+                </tr>
+            </table>
+        </form> -->
+        
+        
+        <section id="basic-horizontal-layouts">
+    <div class="row match-height">
+        <div class="col-md-6 col-12">
+        <div class="card">
+            <div class="card-header">
+            <h4 class="card-title">EDITEZ </h4>
+            </div>
+            <div class="card-content">
+            <div class="card-body">
+                <form class="form form-horizontal" action="#" th:action="@{/saveAction}" th:object="${action}"
+            method="post">
+                <div class="form-body">
+                    <div class="row">
+                    <div class="col-md-4">
+                        <label>Action ID</label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                        <input type="text" th:field="*{id}" readonly="readonly" class="form-control"  placeholder="Action Id">
+                    </div>
+                    <div class="col-md-4">
+                        <label>Privilèges</label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                        <input type="text" th:field="*{actionName}" class="form-control"  placeholder="privilege">
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    <div class="col-12 d-flex justify-content-end">
+                    <a th:href="@{/listActions}">
+                    <button type="button">Cancel</button>
+                	</a>
+                    <button type="submit">Save</button>
+                    
+                    
+                        <!-- <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
+                        <button type="reset" class="btn btn-light-secondary mr-1 mb-1">Reset</button> -->
+                    
+                    </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
+        
+    </div>
+    </section>
+	
+	
+   
+   
+</div>
+
+            
+</body>
+</html>

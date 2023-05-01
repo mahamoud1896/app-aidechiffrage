@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Mise à jour</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  
+  <link href="assets/img/logo_ARISTARC.png" rel="icon">
+  <link href="assets/img/logo_ARISTARC.png" rel="apple-touch-icon">
+  
+  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+  
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" >
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" ></script> -->
+
+  
+  
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" type="text/css" rel="stylesheet">
+  <link href="/assets/vendor/boxicons/css/boxicons.min.css" type="text/css" rel="stylesheet">
+  <link href="/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  
+  
+  
+
+  <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+  <!-- <link rel="stylesheet" th:href="@{/assets/vendor/perfect-scrollbar/perfect-scrollbar.css}"> -->
+  <link rel="stylesheet" th:href="@{/assets/css/bootstrap.css}">
+  <link rel="stylesheet" href="/assets/css/style.css" type="text/css" >
+  
+  
+  
+  
+  
+  
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin - v2.5.0
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a th:href="@{/homePage}" class="logo d-flex align-items-center">
+        <img src="assets/img/logo_ARISTARC.png" alt="">
+        <span class="d-none d-lg-block">ARISTARC</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon -->
+
+        <!-- End Messages Nav -->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            
+            <span class="d-none d-md-block dropdown-toggle ps-2">M. Toure</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Mahamoud Toure</h6>
+              <span>Web Designer</span>
+            </li>
+            
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" th:href="@{/loggin}">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li>
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+	
+	  <li class="nav-heading">Chiffrage Aristarc</li>
+      <li class="nav-item">
+        <a class="nav-link " th:href="@{/homePage}">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-people"></i><span>Gestion des ressources</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a th:href="@{/listProfil}">
+              <i class="bi bi-circle"></i><span>Liste des profils</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/listRess}">
+              <i class="bi bi-circle"></i><span>Liste des ressources</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li><!-- End Components Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Gestion des projets</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a th:href="@{/listProj}">
+              <i class="bi bi-circle"></i><span>Liste des projets</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/listOffres}">
+              <i class="bi bi-circle"></i><span>Liste des offres</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/listTypeProj}">
+              <i class="bi bi-circle"></i><span>Liste des types de projet</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/listTypeAct}">
+              <i class="bi bi-circle"></i><span>Liste des types d'activite</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/listClients}">
+              <i class="bi bi-circle"></i><span>Liste des clients</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Forms Nav -->
+
+      
+
+      
+
+      <!-- End Blank Page Nav -->
+      
+      <li class="nav-heading">ADMINISTRATION</li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-person-check"></i><span>Gestion des utilisateurs</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a th:href="@{/listUsers}">
+              <i class="bi bi-circle"></i><span>Liste des users</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/listRoles}">
+              <i class="bi bi-circle"></i><span>Liste des roles</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/listTypeProj}">
+              <i class="bi bi-circle"></i><span>Liste des actions</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li><!-- End Forms Nav -->
+      
+      
+      <li class="nav-heading">Paramétrage</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{/listObjectifs}">
+          <i class="bi bi-gear"></i>
+          <span>Objectif annuel</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <!-- <div class="pagetitle">
+      <h1>MISE A JOUR DU PROJET</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a th:href="@{/listProj}">Home</a></li>
+          <li class="breadcrumb-item active">Projet</li>
+
+        </ol>
+      </nav>
+    </div> --><!-- End Page Title -->
+
+    <section class="section">
+		<div class="row ">
+        <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+            <h4 class="card-title">MODIFIER LES DONNEES DE L'ACTIVITE</h4>
+            </div>
+            <div class="card-content">
+            <div class="card-body">
+                <form class="form form-horizontal" action="#" th:action="@{'/saveEdictAct/' + ${activite.id}}"   th:object="${activite}"
+            method="post">
+                <div class="form-body">
+                    <div class="row">
+					
+					
+					<div class="col-md-4">
+                        <label>ACTIVITE ID</label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                        <input type="number" th:field="*{id}" readonly="readonly" class="form-control"  placeholder="Activite Id">
+                    </div>
+                    <input type="hidden" th:field="*{ficheprojetId}" readonly="readonly" class="form-control"  placeholder="Activite Id">
+                    <div class="col-md-4">
+                        <label>Titre de l'activite</label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                        <input type="text" th:field="*{titre}" class="form-control"  placeholder="Titre">
+                    </div>
+                    <div class="col-md-4">
+                        <label>Nombre de joursHomme prevus</label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                        <input type="number" th:required="required" th:field="*{joursHommePrevus}" class="form-control" placeholder="Nombre de joursHomme prevus" id="first-name-icon">
+                    </div>
+                    <div class="col-md-4">
+                        <label>Nombre de joursHomme consommÃ©s</label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                        <input type="number" th:required="required" th:field="*{joursHommeConsommes}" class="form-control"  placeholder="Nombre de joursHomme">
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <label>Description</label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                    	<input type="text"  th:field="*{description}" class="form-control" placeholder="Description" id="first-name-icon">
+                        
+                    </div>
+                    
+                    
+                    
+                    <div class="col-md-4">
+                        <label>Type d'activite</label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                    	<select th:field="*{typeActivite}">
+                        <option value="">Select...</option>
+                        <option th:each="type : ${typeActivite}" th:value="${type.id}" th:utext="${type.nomActivite}"/>
+                    	</select>
+                    	
+                        
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <label>Date de debut </label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                        <input type="date" th:field="*{dateDebutActivite}"  class="form-control"  placeholder="Date debut ">
+                    </div>
+                    <div class="col-md-4">
+                        <label>Date de fin </label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                        <input type="date" th:field="*{dateFinActivite}"  class="form-control"  placeholder="Date fin ">
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                     &nbsp;&nbsp;&nbsp;
+                    <div class="col-12 d-flex justify-content-end">
+                    <a th:href="@{'/newAct/' + ${fpp.id}}">
+                    
+                    <button type="button" class="btn btn-secondary">Annuler</button>
+                	</a>
+                    <button type="submit" class="btn btn-primary me-1 mb-1">Sauvegarder</button>
+                    
+                    
+                        <!-- <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
+                        <button type="reset" class="btn btn-light-secondary mr-1 mb-1">Reset</button> -->
+                    
+                    </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+            </div>
+            
+            
+            
+            <div class="card-content">
+		                <div class="card-body">
+		                    <div class="form-group">
+		                    
+		                    <p> Affectez les ressources</p>
+		                    
+		                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#inlineForm">
+		                        Ajouter
+		                    </button>
+		
+		                    
+		                    <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog"
+		                        aria-labelledby="myModalLabel33" aria-hidden="true">
+		                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+		                        <div class="modal-content">
+		                            <div class="modal-header">
+		                            <h4 class="modal-title" id="myModalLabel33">Ajoutez des ressources</h4>
+		                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		                                <i data-feather="x"></i>
+		                            </button>
+		                            
+		                            </div>
+		                            <form th:action="@{'/saveResAct/' + ${projet.id}}" th:each="projet : ${activite}" th:object="${ressActiv}">
+		                            <div class="modal-body">
+		                            	<div class="col-md-6 mb-4">
+			                                    <h6>Selectionner les ressources</h6>
+			                                   
+			                                 </div>
+			                                    <div class="input-group mb-3">
+			                                        <label class="input-group-text" for="inputGroupSelect01"></label>
+			                                        <select class="form-select" th:field="*{ressAct}" id="inputGroupSelect01">
+			                                        
+			                                             <option value="">Select...</option>
+			                                            
+			                                            <option th:each="type : ${listRessource}" th:value="${type.id}" th:text="${type.prenom}"></option>
+			                                        </select>
+			                                    </div>
+		                                
+		                                <label>DurÃ©e: </label>
+		                                <div class="form-group">
+		                                <input type="number" th:field="*{duree}" placeholder="duree" class="form-control">
+		                                </div>
+		                                
+		                            </div>
+		                            <div class="modal-footer">
+		                                <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
+		                                <i class="bx bx-x d-block d-sm-none"></i>
+		                                <span class="d-none d-sm-block">Close</span>
+		                                </button>
+		                                <button type="submit" class="btn btn-primary me-1 mb-1">Add</button>
+		                                <!-- <button type="button" class="btn btn-primary ml-1" data-dismiss="modal">
+		                                <i class="bx bx-check d-block d-sm-none"></i>
+		                                <span class="d-none d-sm-block">Add</span>
+		                                </button> -->
+		                            </div>
+		                            </form>
+		                        </div>
+		                        </div>
+		                    </div>
+		                    </div>
+		                </div>
+		                </div> 
+            </div>
+            </div>
+        </div>
+        
+        <div class="card">
+        		
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="card-title">LES RESSOURCES</h4>
+                    <!-- <div class="d-flex ">
+                        <i data-feather="download"></i>
+                    </div> -->
+                    
+                </div>
+                
+                
+                
+                
+                <div class="row" id="table-striped-dark">
+				  <div class="col-12">
+				    <div class="card" th:if="${activite}">
+                
+                
+                
+                <!-- <div class="card-body px-0 pb-0"> -->
+                    <div class="table-responsive">
+                        <table class="table table-striped table-dark mb-0" >
+                            <thead>
+                            <tr>
+                                <!-- <th>ID Ressource</th> -->
+                                <th>Temps passe sur l'activite</th>
+                                
+                                <th>Intervenant</th>
+                                
+                                
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="act : ${activite.ressActivites}">
+				               <!--  <td th:text="${profil.id}">Profil ID</td> -->
+				                <td th:text="${act.getDuree()} + ' jour(s)'"></td>
+				                <td th:text="${act.getRessAct().getPrenom()}"></td>
+				                
+				                <!-- <td th:text="${activite.ficheProjet.getRessources()}"></td> -->
+				                
+				                
+				                
+				                <td>
+				                    <a href="#" class="btn icon btn-primary"  th:href="@{'/editAct/' + ${act.id}}"><i data-feather="edit"></i></a>
+				                    &nbsp;&nbsp;&nbsp;
+				                     <a href="#" th:onclick="checker()" class="btn icon btn-danger" th:href="@{'/deleteReAct/' + ${act.id}}"><i data-feather="delete"></i></a>
+				                </td>
+				            </tr>
+                            </tbody>
+                        </table>
+                        
+                        <script type="text/javascript">
+                    	function checker(){
+                    		var result = confirm('Are you sure?');
+                    		
+                    		if(result == false){
+                    			event.preventDefault();
+                    		}
+                    	}
+                    </script> 
+                        
+                    </div>
+                    
+                    
+                    </div>
+                    </div>
+                    </div>
+            
+            
+            
+        
+        
+        
+    </div>
+		
+		
+		</section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>ARISTARC</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  
+  
+  					
+  
+	
+   
+
+  
+  
+  <script type="text/javascript" th:src="@{/assets/js/main.js}"></script>	
+ <script type="text/javascript" th:src="@{/assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+ <script th:src="@{/assets/vendor/quill/quill.min.js}"></script>
+<!--  <script th:src="@{assets/vendor/apexcharts/apexcharts.min.js}"></script>
+  <script th:src="@{assets/vendor/chart.js/chart.umd.js}"></script>
+  <script th:src="@{assets/vendor/echarts/echarts.min.js}"></script>
+  
+  <script th:src="@{assets/vendor/simple-datatables/simple-datatables.js}"></script>
+  <script th:src="@{assets/vendor/tinymce/tinymce.min.js}"></script>
+  <script th:src="@{assets/vendor/php-email-form/validate.js}"></script> -->
+
+  <!-- Template Main JS File -->
+  
+   
+ 
+</body>
+
+</html>

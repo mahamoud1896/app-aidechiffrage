@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/dashboard}">
+<head>
+   
+    <title>Chiffrage Aristarc</title>
+    
+   
+</head>
+<body>
+    
+            
+<div class="main-content container-fluid" layout:fragment="content">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Activite</h3>
+                
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a th:href="@{'/newAct/' + ${ficheProj.id}}">Activite</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Nouvelle activité</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+    <!-- Basic Horizontal form layout section start -->
+    <section id="multiple-column-form">
+    <div class="row match-height">
+        
+        
+        <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+            <h4 class="card-title">AJOUTER UNE ACTIVTE A CE PROJET</h4>
+            </div>
+            <div class="card-content">
+            <div class="card-body">
+                <form th:action="@{'/saveAct/' + ${projet.id}}" th:each="projet : ${ficheProj}" th:object="${activite}"
+            method="post" class="form form-horizontal">
+            	<!-- <form th:action="@{/saveAct}" th:each="projet : ${ficheProj}" th:object="${activite}"
+            method="post" class="form form-horizontal"> -->
+                <div class="form-body">
+                    <div class="row">
+                    
+                      <div class="col-md-4">
+                            <label>ID </label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <!-- <input type="number" readonly="readonly" th:text="${projet.id}"  th:field="*{id}" class="form-control" placeholder="Id" id="first-name-icon"> -->
+                                    <input type="number" readonly="readonly" th:field="*{id}" class="form-control" placeholder="Id" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="number"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         <input type="hidden" readonly="readonly" th:value="${idProj}" th:field="*{ficheprojetId}" class="form-control" placeholder="Id" id="first-name-icon">
+                         
+                        
+                            
+                        
+                        <div class="col-md-4">
+                            <label>Titre de l'activite</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="text" required th:field="*{titre}" class="form-control" placeholder="Titre" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="name"></i>
+                                    </div>
+                                    <div th:if="${#fields.hasErrors('titre')}" th:errors="*{titre}" style="color: 
+red" class="item fieldinvalid">Erreur Nom</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <label>Nombre de joursHomme prevus</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="number" th:required="required" th:field="*{joursHommePrevus}" class="form-control" placeholder="Nombre de joursHomme prevus" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="name"></i>
+                                    </div>
+                                    <div th:if="${#fields.hasErrors('joursHommePrevus')}" th:errors="*{joursHommePrevus}" style="color: 
+red" class="item fieldinvalid">Erreur Nom</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <label>Nombre de joursHomme consommés</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="number" th:required="required" th:field="*{joursHommeConsommes}" class="form-control" placeholder="Nombre de joursHomme" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="name"></i>
+                                    </div>
+                                    <div th:if="${#fields.hasErrors('joursHommeConsommes')}" th:errors="*{joursHommeConsommes}" style="color: 
+red" class="item fieldinvalid">Erreur Nom</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="col-md-4">
+                            <label>Description</label>
+                        </div>
+                        <div class="col-md-8">
+                        
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="text" required th:field="*{description}" class="form-control" placeholder="Description" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="name"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                                    <label>Selectionner le Type d'activite</label>
+                                   
+                                 </div>
+                                 <div class="col-md-8">
+                                    <div class="form-group has-icon-left">
+                                        <div class="position-relative">
+                                        <select class="form-select" required th:field="*{typeActivite}" id="inputGroupSelect01">
+                                        
+                                             <option value="">Select...</option>
+                                            
+                                            <option th:each="type : ${typeActivite}" th:value="${type.id}" th:text="${type.nomActivite}"></option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    
+                                    
+                         
+                         
+                         <div class="col-md-4">
+                            <label>Date Debut </label>
+                        </div>
+                        <div class="col-md-8 form-group">
+                        
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="date" required th:field="*{dateDebutActivite}" class="form-control" placeholder="Date debut" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="date"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                         <br>
+                        <div class="col-md-4">
+                            <label>Date Fin </label>
+                        </div>
+                        <div class="col-md-8 form-group">
+                        
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="date" required  th:field="*{dateFinActivite}" class="form-control" placeholder="Date fin" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="date"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                    
+                                   
+                                    
+                          <!-- <div class="col-md-4">
+                            <label>Date de Creation</label>
+                        </div>
+                        <div class="col-md-8">
+                        
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="date" th:value="${#dates.format(#dates.createNow() , 'yyyy/MMM/dd_HH-mm-ss')}"  th:field="*{dateCreation}" class="form-control" placeholder="Date creation" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="date"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        
+                        
+                        
+                        
+			              
+                       
+                                 
+                       
+                    <div class="col-12 d-flex justify-content-end ">
+                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                        
+                        <a th:href="@{'/newAct/' + ${ficheProj.id}}" > <button type="button" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                         </a>
+                        
+                    </div>
+                    </div>
+                </div>
+                </form>
+                
+                
+                
+            </div>
+            </div>
+        </div>
+        </div>
+        
+    </div>
+    </section>
+    
+</div>
+
+		
+
+            
+</body>
+</html>

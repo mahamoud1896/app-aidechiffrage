@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/dashboard}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="shortcut icon" href="assets/images/logo_ARISTARC.png" type="image/x-icon">
+</head>
+<body>
+<div class="main-content container-fluid" layout:fragment="content">
+<div class="page-title">
+    <h3>Dashboard</h3>
+    
+</div>
+<section class="section">
+    
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class='card-heading p-1 pl-3'>Sales</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 col-4">
+                            <div class="pl-3">
+                                <h1 class='mt-5'>$21,102</h1>
+                                <p class='text-xs'><span class="text-green"><i data-feather="bar-chart"
+                                                                               width="15"></i> +19%</span> than last month</p>
+                                <div class="legends">
+                                    <div class="legend d-flex flex-row align-items-center">
+                                        <div class='w-3 h-3 rounded-full bg-info me-2'></div><span
+                                            class='text-xs'>Last Month</span>
+                                    </div>
+                                    <div class="legend d-flex flex-row align-items-center">
+                                        <div class='w-3 h-3 rounded-full bg-blue me-2'></div><span
+                                            class='text-xs'>Current Month</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-12">
+                            <canvas id="bar"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3 class='card-heading p-1 pl-3'>Montant reçu par type d'offre</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        
+                        <div class="col-md-6 col-4">
+                        
+                        <div class="containeg">
+							<h2 align="center"></h2>
+					
+							<div id="containeg"
+								style="width: 400px; height: 400px; margin: 0 auto"></div>
+						</div> 
+						 <script
+							src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+						
+						<script
+							src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+						<script src="https://code.highcharts.com/highcharts.js"></script>
+						<script src="https://code.highcharts.com/modules/exporting.js"></script>
+						<script src="https://code.highcharts.com/modules/export-data.js"></script>
+						<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+						<script th:inline="javascript">
+						
+						var transactions = [[${delaiprojets}]];
+						
+						
+						
+						
+					    $(function(){
+					    	
+					    Highcharts.chart('containeg', {
+					        chart: {
+					            type: 'column'
+					        },
+					        title: {
+					            text: 'Offre'
+					        },
+					        subtitle: {
+					            text: ''
+					        },
+					        xAxis: {
+					            categories: [[${projet}]],
+					            crosshair: true
+					        },
+					        yAxis: {
+					            min: 10000,
+					            max:300000,
+					            title: {
+					                text: 'Montant'
+					            }
+					        },
+					        tooltip: {
+					            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+					            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+					            '<td style="padding:0"><b>{point.y:.1f} fcfa</b></td></tr>',
+					            footerFormat: '</table>',
+					            shared: true,
+					            useHTML: true
+					        },
+					        plotOptions: {
+					            column: {
+					                pointPadding: 0.2,
+					                borderWidth: 0
+					            }
+					        },
+					        series: [{
+					        	name: 'Montant',
+					            data: [[${delaiprojets}]]
+					           
+					        
+					        }
+					        ]
+					      });
+					    });
+					</script> 
+                        
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            </div>
+            
+            
+            <div class="col-md-6">
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3 class='card-heading p-1 pl-3'>Délai de livraison</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        
+                       <!--  <div class="col-md-4 col-12"> -->
+                        <div class="col-md-6 col-4">
+                        
+                        <div class="containez">
+							<!-- <h2 align="center">Delai livraison</h2> -->
+					
+							<div  id="containez"
+								style="width: 400px; height: 400px; margin: 0 auto"></div>
+						</div> 
+						 <script
+							src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+						
+						<script
+							src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+						<script src="https://code.highcharts.com/highcharts.js"></script>
+						<script src="https://code.highcharts.com/modules/exporting.js"></script>
+						<script src="https://code.highcharts.com/modules/export-data.js"></script>
+						<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+						
+						<!-- <figure class="highcharts-figure">
+						  <div id="containez"></div>
+						  <p class="highcharts-description">
+						    Ce graphique nous permet de visualiser le délai moyen de livraison par projet 
+						    et de faire un comparatif avec le delai moyen qui était prévu
+						  </p>
+						</figure> -->
+						
+						
+						
+						
+						<script th:inline="javascript">
+					    $(function(){
+					    Highcharts.chart('containez', {
+					        chart: {
+					            type: 'column'
+					        },
+					        title: {
+					            text: ''
+					        },
+					        subtitle: {
+					            text: 'Delai'
+					        },
+					        xAxis: {
+					            categories: [[${projett}]],
+					            crosshair: true
+					        },
+					        yAxis: {
+					            min: 0,
+					            max:30,
+					            title: {
+					                text: 'Nbre de jours'
+					            }
+					        },
+					        tooltip: {
+					            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+					            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+					            '<td style="padding:0"><b>{point.y:f} days</b></td></tr>',
+					            footerFormat: '</table>',
+					            shared: true,
+					            useHTML: true
+					        },
+					        plotOptions: {
+					            column: {
+					                pointPadding: 0.2,
+					                borderWidth: 0
+					            }
+					        },
+					        series: [{
+					        	name: 'delai previsionnel',
+					            data: [[${delaiprojett}]]
+					           
+					        
+					        },{
+					        	name: 'delai réel',
+					            data: [[${delaiprojetts}]]
+					           
+					        
+					        }]
+					      });
+					    });
+					</script>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3 class='card-heading p-1 pl-3'>Pourcentage d'atteinte de l'objectif</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        
+                        <div class="col-md-6 col-4">
+                        
+                        <div class="containeu">
+							<h2 align="center"></h2>
+					
+							<div  id="containeu"
+								style="width: 400px; height: 400px; margin: 0 auto"></div>
+						</div> 
+						 <script
+							src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+						
+						<script
+							src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+						<script src="https://code.highcharts.com/highcharts.js"></script>
+						<script src="https://code.highcharts.com/modules/exporting.js"></script>
+						<script src="https://code.highcharts.com/modules/export-data.js"></script>
+						<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+						
+						
+						<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+						<script th:inline="javascript">
+						
+						
+						
+						
+						
+						
+					    $(function(){
+					    	
+					    	
+					    	// Data retrieved from https://netmarketshare.com
+					    	Highcharts.chart('containeu', {
+					    	  chart: {
+					    		  plotBackgroundColor: null,
+					    		    plotBorderWidth: null,
+					    		    plotShadow: false,
+					    	    type: 'pie'
+					    	  },
+					    	  title: {
+					    	    text: 'Montant facture actuel par rapport a l objectif annuel'
+					    	  },
+					    	  tooltip: {
+					    	    pointFormat: '{series.name}: <b>{point.y:.1f}%</b>'
+					    	  },
+					    	  accessibility: {
+					    	    point: {
+					    	      valueSuffix: '%'
+					    	    }
+					    	  },
+					    	  plotOptions: {
+					    	    pie: {
+					    	      allowPointSelect: true,
+					    	      cursor: 'pointer',
+					    	      dataLabels: {
+					    	        enabled: true,
+					    	        format: '<b>{point.name}</b>: {point.y:.1f} %'
+					    	      }
+					    	    }
+					    	  },
+					    	  series: [{
+					    	    name: 'objectif',
+					    	    colorByPoint: true,
+					    	    data: [{
+					    	        name: 'Objectif atteint',
+					    	        y: [[${pourcent}]]
+					    	      },
+					    	      {
+						    	        name: 'Objectif restant',
+						    	        y: [[${pourcentRestant}]]
+						    	      }
+					    	    	]
+					    	  }]
+					    	});
+					    	
+					    	
+					    });
+					</script>
+                        
+                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+        
+    </div>
+</section> 
+
+
+
+</div>
+<!-- <th:block layout:fragment="script">
+<script th:inline="javascript">
+    var transactions =<c:out value="${delaiprojet}"/></script>
+<script th:src="@{/js/cust.js}"></script>
+</th:block> -->
+</body>
+</html>

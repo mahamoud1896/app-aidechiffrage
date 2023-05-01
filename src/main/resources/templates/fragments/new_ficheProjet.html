@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/dashboard}">
+<head>
+    
+    <title>Chiffrage aristarc</title>
+    <link rel="shortcut icon" href="assets/images/logo_ARISTARC.png" type="image/x-icon">
+    
+</head>
+<body>
+    
+            
+<div class="main-content container-fluid" layout:fragment="content">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Fiche projet</h3>
+                <p class="text-subtitle text-muted"></p>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a th:href="@{/listProj}">Fiche Projet</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Nouvelle fiche projet</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+    <!-- Basic Horizontal form layout section start -->
+    <section id="multiple-column-form">
+    <div class="row match-height">
+        
+        <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+            <h4 class="card-title">ENREGISTREZ VOTRE FICHE PROJET</h4>
+            </div>
+            <div class="card-content">
+            <div class="card-body">
+                <form th:action="@{/saveFP}" th:object="${ficheProj}"
+            method="post" class="form form-horizontal">
+                <div class="form-body">
+                    <div class="row">
+                    
+                      <!-- <div class="col-md-4">
+                            <label>ID </label>
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="number" readonly="readonly"  th:field="*{id}" class="form-control" placeholder="Id" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="number"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> --> 
+                        <!-- <div class="col-md-4">
+                            <label>Numero du projet</label>
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="number" readonly="readonly"  th:field="*{numProjet}" class="form-control" placeholder="Nom" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="name"></i>
+                                    </div>
+                                    <div th:if="${#fields.hasErrors('numProjet')}" th:errors="*{numProjet}" style="color: 
+red" class="item fieldinvalid">Erreur Nom</div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="col-md-4">
+                            <label>Nom du projet</label>
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="text"  th:field="*{nomProjet}" required class="form-control" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="name"></i>
+                                    </div>
+                                    <div th:if="${#fields.hasErrors('nomProjet')}" th:errors="*{nomProjet}" style="color: 
+red" class="item fieldinvalid">Erreur Nom</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label>Besoins du client</label>
+                        </div>
+                        <!-- <div class="col-md-8">
+                        
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="text"  th:field="*{description}" class="form-control" placeholder="Description" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="name"></i>
+                                    </div>
+                                    <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}" style="color: 
+red" class="item fieldinvalid">Erreur Desc</div>
+                                </div>
+                            </div>
+                        </div> -->
+                        
+                        <div class="col-md-8 form-group">            
+    					      <textarea class="form-control" required th:field="*{description}" rows="3"></textarea>
+						</div>
+                        
+                        <div class="col-md-4">
+                                    <label>Selectionner le client</label>
+                                    
+                                 </div>
+                                 
+                                 	<div class="col-md-8 form-group">
+                                       
+                                        <select name="client"  class="form-select" required th:field="*{client}" id="client">
+                                        
+                                            <option value="">Select...</option>
+                                            
+                                            <option th:each="offreType : ${client}" th:value="${offreType.id}" th:text="${offreType.nomClient}"></option>
+                                        </select>
+                                         
+                                    </div>
+                        
+                        <div class="col-md-4">
+                                    <h6>Etat du projet</h6>
+                                    
+                                 </div>
+                                    <div class="col-md-8 form-group">
+                                      <select class="form-control" required id="etatProjet" name="etatProjet">
+										    <option th:each="etatProjet : ${T(com.chiffrageTest.entities.EtatProjet).values()}" 
+										        th:value="${etatProjet}" th:text="${etatProjet}"></option>
+										</select>
+                                    </div>
+                        <div class="col-md-4">
+                            <label>Cout global</label>
+                        </div>
+                        <div class="col-md-8 form-group">
+                        
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="number" required th:field="*{coutGlobal}" class="form-control"  id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="name"></i>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-4">
+                            <label>Date de paiement</label>
+                        </div>
+                        <div class="col-md-8 form-group">
+                        
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="date"  th:field="*{datePaiement}" class="form-control" placeholder="Date paiement" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="date"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        
+                        <div class="col-md-4">
+                                    <h6>Selectionner le Type de projet</h6>
+                                    
+                                 </div>
+                                    <div class="col-md-8 form-group">
+                                       <!--  <label class="input-group-text" for="inputGroupSelect01">Type</label> -->
+                                        <select th:field="*{typeProjet}" required class="form-control" id="subject" name="subject">
+                                        <!-- <select class="form-select" th:field="*{typeProjet}" id="inputGroupSelect01"> -->
+                                        
+                                             <option value="">select...</option>
+                                            
+                                            <option th:each="type : ${typeProjet}" th:value="${type.id}" th:text="${type.nom}"></option>
+                                        </select>
+                                    </div>
+                                    
+                                  
+                                    
+                                   
+                     
+                        	   <!-- <div class="col-md-3 mb-4">
+                                    <h6>Selectionner les ressources </h6>
+                                    
+                                      <div class="multi-selector"> 
+                                     <div class="input-group mb-3">
+                                        <select th:field="*{ressources}" class="js-example-basic-multiple" name="states[]" multiple="multiple"> 
+                                       <select th:field="*{ressources}" class="form-control" id="subject" name="subject">
+                                       
+                                       	
+                                       		
+										  	<option value="">Select...</option>
+                                            
+                                            
+										  <option th:each="ress : ${ressources}" th:value="${ress.id}" th:text="${ress.prenom}"></option>
+										</select>
+                                    </div>
+                                    
+                                     <script>
+                                     $(document).ready(function() {
+                                    	    $('.js-example-basic-multiple').select2();
+                                    	});
+                                     </script>
+                                   
+                                </div>   -->
+                                
+                                <!-- <div class="col-md-4">
+                                    <h6>Selectionner les ress</h6>
+                                </div>
+                                    
+                                   
+									<div class="col-md-8 form-group">
+									<div class="col-8">
+										<th:block th:each="action: ${listRessource}">
+										<input type="checkbox" th:field="*{ressources}"
+											th:text="${action.prenom}" th:value="${action.id}" class="m-2" />
+										</th:block>
+									</div>
+									</div> -->
+									
+								<div class="col-md-4">
+                                    <h6>Selectionner les ressources</h6>
+                                    
+                                    </div>
+                                    <div class="col-md-8 form-group">
+                                        <select th:field="*{ressources}" required class="choices form-select multiple-remove" multiple="multiple">
+                                            <option th:each="action: ${listRessource}" th:text="${action.prenom}" th:value="${action.id}">Ressources</option>
+                                            
+                                        </select>
+                                    </div>
+                                
+						
+                                
+                        
+                        <!-- <div class="col-md-4">
+                            <label>Description Synthétique</label>
+                        </div>        
+                        <div class="col-md-8 form-group">            
+    					      <textarea class="form-control" th:field="*{descSynthetique}" rows="3"></textarea>
+						</div> -->
+                                
+                            
+                        
+                                    
+                          <!-- <div class="col-md-6 mb-4">
+                                    <h6>Selectionner les ressources</h6>
+                                    <div class="input-group mb-3">
+                                        <label class="input-group-text" for="inputGroupSelect01">Ressources</label>
+                                        <select class="choices form-select multiple-remove" multiple="multiple" th:field="*{ressources}" >
+                                        
+                                            <option value="">Select...</option>
+                                            
+                                            <option th:each="ress : ${ressources}" th:value="${ress.id}" th:text="${ress.prenom}"></option>
+                                            
+                                        </select>
+                                    </div>
+                                 </div> -->
+                                 
+                             
+                                 
+                             <!-- <div class="row"> -->
+                           <!--  <div class="col-md-6 mb-4"> -->          
+                          <div class="col-md-4">
+                            <label>Date Debut previsionnel</label>
+                        </div>
+                        <div class="col-md-8 form-group">
+                        
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="date" required th:field="*{dateDebutPrev}" class="form-control" placeholder="Date debut prev" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="date"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                         <br>
+                        <div class="col-md-4">
+                            <label>Date Fin previsionnelle</label>
+                        </div>
+                        <div class="col-md-8 form-group">
+                        
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="date" required  th:field="*{dateFinPrev}" class="form-control" placeholder="Date fin prev" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="date"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                            <br>
+                        <div class="col-md-4">
+                            <label>Date Debut effectif</label>
+                        </div>
+                        <div class="col-md-8 form-group">
+                        
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="date" required  th:field="*{dateDebutEffective}" class="form-control" placeholder="Date debut effectif" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="date"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Date Fin effective</label>
+                        </div>
+                        
+                        <div class="col-md-8 form-group">
+                        
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="date" required th:field="*{dateFinEffective}" class="form-control" placeholder="Date fin effective" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="date"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  </div> -->
+                         <!-- </div>   -->  
+                                 
+                       
+                    <div class="col-12 d-flex justify-content-end ">
+                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                      
+                        <a th:href="@{/listProj}"> <button type="button" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                         </a>
+                    </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+   
+    <!-- // Basic multiple Column Form section end -->
+</div>
+
+	<script th:src="@{/assets/js/main.js}"></script>
+    <script th:src="@{/assets/vendors/choices.js/choices.min.js}"></script>
+
+           
+</body>
+</html>

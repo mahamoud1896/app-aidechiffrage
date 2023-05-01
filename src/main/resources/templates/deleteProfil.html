@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can't delete</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+
+    <link rel="shortcut icon" th:href="@{/images/favicon.svg}" type="image/x-icon">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+
+<body>
+<div id="auth">
+
+    <div class="container">
+        <div class="row">
+        <div class="card-body">
+            
+            <h2 style="color:white">Désolé, ce profil ne peut être supprimé car il a été affecté à une ressource</h2>
+            
+            <h3 style="color:white">Retournez vers la page précédente :<a th:href="@{/listProfil}"> Liste des profils</a></h3>
+            
+         </div>   
+        </div>
+    </div>
+
+</div>
+<script th:src="@{/js/feather.min.js}"></script>
+<script th:src="@{/js/app.js}"></script>
+
+<script th:src="@{/js/main.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/dashboard}">
+<head>
+   
+    <title>Chiffrage Aristarc - Objectif annuel</title>
+    <link rel="shortcut icon" href="assets/images/logo_ARISTARC.png" type="image/x-icon">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+   <script type="text/javascript">
+      $(function() {
+         $( "#date" ).datepicker({dateFormat: 'yy'});
+      });
+   </script>
+   
+</head>
+<body>
+    
+            
+<div class="main-content container-fluid" layout:fragment="content">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Objectif annuel</h3>
+                
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a th:href="@{/listObjectifs}">Objectif</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Nouvel objectif</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+    <!-- Basic Horizontal form layout section start -->
+    <section id="multiple-column-form">
+    <div class="row match-height">
+        
+        <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+            <h4 class="card-title">ENREGISTREZ UN NOUVEL OBJECTIF</h4>
+            </div>
+            <div class="card-content">
+            <div class="card-body">
+                <form th:action="@{/saveObj}" th:object="${obj}"
+            method="post" class="form form-horizontal">
+                <div class="form-body">
+                    <div class="row">
+                    
+                    	<div class="col-md-4">
+                            <label>ID de l'objectif</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="number" readonly="readonly"  th:field="*{id}" class="form-control" placeholder="Id" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="number"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Montant de l'objectif annuel</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="text" required th:field="*{objectifAnuuel}" class="form-control" placeholder="Montant" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="user"></i>
+                                    </div>
+                                    <!-- <div th:if="${#fields.hasErrors('objectifAnuuel')}" th:errors="*{objectifAnuuel}" style="color: 
+red" class="item fieldinvalid">Erreur Nom</div> -->
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Année de l'objectif</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+									   <script type="text/javascript">
+									      $(function() {
+									         $( "#date" ).datepicker({dateFormat: 'yy'});
+									      });
+									   </script>
+                                    <input type="date" required id="date" th:field="*{annee}" class="form-control" placeholder="YYYY" >
+                                     <span th:if="${#fields.hasErrors('annee')}" th:errors="*{annee}" style="color: 
+red"  class="item fieldinvalid"></span>
+                                    <div class="form-control-icon">
+                                        <i data-feather="number"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                       
+                    <div class="col-12 d-flex justify-content-end ">
+                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                         <a th:href="@{/listObjectifs}">
+                        <button type="button" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                        </a>
+                    </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+    
+</div>
+
+            
+</body>
+</html>

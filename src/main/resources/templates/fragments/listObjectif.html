@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Objectif</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/assets/img/logo_ARISTARC.png" rel="icon">
+  <link href="/assets/img/logo_ARISTARC.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <!-- <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"> -->
+
+  <!-- Vendor CSS Files -->
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" >
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" ></script>
+  
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+
+
+	
+  <!-- Template Main CSS File -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+  
+  <style>
+    .modal-open {
+    overflow: auto !important;
+}
+
+  </style>
+  
+  
+  
+  
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin - v2.5.0
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a th:href="@{/homePage}" class="logo d-flex align-items-center">
+        <img src="assets/img/logo_ARISTARC.png" alt="">
+        <span class="d-none d-lg-block">ARISTARC</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <!-- End Messages Nav -->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <!-- <img src="" alt="Profile" class="rounded-circle"> -->
+            <span class="d-none d-md-block dropdown-toggle ps-2">M. Toure</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Mahamoud Toure</h6>
+              <span>Web Designer</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" th:href="@{/loggin}">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+	
+	  <li class="nav-heading">Chiffrage Aristarc</li>
+      <li class="nav-item">
+        <a class="nav-link " th:href="@{/homePage}">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-people"></i><span>Gestion des ressources</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a th:href="@{/listProfil}">
+              <i class="bi bi-circle"></i><span>Liste des profils</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/listRess}">
+              <i class="bi bi-circle"></i><span>Liste des ressources</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li><!-- End Components Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Gestion des projets</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a th:href="@{/listProj}">
+              <i class="bi bi-circle"></i><span>Liste des projets</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/listOffres}">
+              <i class="bi bi-circle"></i><span>Liste des offres</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/listTypeProj}">
+              <i class="bi bi-circle"></i><span>Liste des types de projet</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/listTypeAct}">
+              <i class="bi bi-circle"></i><span>Liste des types d'activite</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/listClients}">
+              <i class="bi bi-circle"></i><span>Liste des clients</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Forms Nav -->
+
+      
+
+      
+
+      <!-- End Blank Page Nav -->
+      
+      <li class="nav-heading">ADMINISTRATION</li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-person-check"></i><span>Gestion des utilisateurs</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a th:href="@{/listUsers}">
+              <i class="bi bi-circle"></i><span>Liste des users</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/listRoles}">
+              <i class="bi bi-circle"></i><span>Liste des roles</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/listTypeProj}">
+              <i class="bi bi-circle"></i><span>Liste des actions</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li><!-- End Forms Nav -->
+      
+      
+      <li class="nav-heading">Paramétrage</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{/listObjectifs}">
+          <i class="bi bi-gear"></i>
+          <span>Objectif annuel</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Liste des offres</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a th:href="@{/homePage}">Home</a></li>
+          <li class="breadcrumb-item active">Offre</li>
+
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-body">
+					  <h5 class="card-title">Datatables</h5>
+		<div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+			
+			
+			
+			
+			<div class="dataTable-container">
+			
+				<!-- <button  id="myButton" class="btn btn-primary" data-toggle="modal" data-target="#addModal" >Nouveau</button> -->
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal" onclick="$('#addModal').modal('show')">Nouveau</button>
+				
+						
+				<table class="table datatable dataTable-table">
+					<thead>
+						<tr>
+						<th>ID Objectif</th>
+                        <th>Montant de l'objectif annuel</th>
+                        <th>Année de l'objectif </th>
+                        
+                       
+						<th scope="col"  style="width: 23.0751%;">Actions</th>
+						</tr>
+					</thead>
+				<tbody>
+				<tr th:each="obj : ${objs}">
+					<!-- <th th:text="${projet.id}" scope="row">Id</th> -->
+					<td th:text="${obj.id}"> ID</td>
+	                <td th:text="${obj.objectifAnuuel}">Objectif</td>
+	                <td th:text="${obj.annee}">Objectif</td>
+					<td>
+	                	<div class="btn-group">
+		                    <a class="btn btn-success edit"  th:href="@{'/editObjectif/' + ${obj.id}}"><i class="ri-edit-box-line"></i></a>
+		    
+		                    &nbsp;&nbsp;&nbsp;                    
+	                        
+	                        <a href="#" class="btn btn-danger" th:onclick="checker()" th:href="@{'/deleteObjectif/' + ${obj.id}}" ><i class="ri-delete-bin-6-line"></i></a>
+                        </div>
+				    </td>
+				</tr>
+				
+				</tbody>
+				</table>
+				<script type="text/javascript">
+                    	function checker(){
+                    		var result = confirm('Are you sure?');
+                    		
+                    		if(result == false){
+                    			event.preventDefault();
+                    		}
+                    	}
+                    </script> 
+				
+				
+				<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				
+				  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">Nouvel objectif</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				        <form th:action="@{/saveObj}" th:object="${obj}" method="post" class="form form-horizontal">
+				        
+				          <div class="form-body">
+				                    <div class="row">
+				                        
+				                        <div class="col-md-4">
+				                            <label>ID de l'objectif</label>
+				                        </div>
+				                        <div class="col-md-8">
+				                            <div class="form-group has-icon-left">
+				                                <div class="position-relative">
+				                                    <input type="number" readonly="readonly"  th:field="*{id}" class="form-control" placeholder="Id" id="first-name-icon">
+				                                    <div class="form-control-icon">
+				                                        <i data-feather="number"></i>
+				                                    </div>
+				                                </div>
+				                            </div>
+				                        </div>
+				                        <div class="col-md-4">
+				                            <label>Montant de l'objectif annuel</label>
+				                        </div>
+				                        <div class="col-md-8">
+				                            <div class="form-group has-icon-left">
+				                                <div class="position-relative">
+				                                    <input type="text" required th:field="*{objectifAnuuel}" class="form-control" placeholder="Montant" id="first-name-icon">
+				                                    <div class="form-control-icon">
+				                                        <i data-feather="user"></i>
+				                                    </div>
+				                                    <!-- <div th:if="${#fields.hasErrors('objectifAnuuel')}" th:errors="*{objectifAnuuel}" style="color: 
+				red" class="item fieldinvalid">Erreur Nom</div> -->
+				                                </div> 
+				                            </div>
+				                        </div>
+				                        <div class="col-md-4">
+				                            <label>Année de l'objectif</label>
+				                        </div>
+				                        <div class="col-md-8">
+				                            <div class="form-group has-icon-left">
+				                                <div class="position-relative">
+				                                	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+													   <script type="text/javascript">
+													      $(function() {
+													         $( "#date" ).datepicker({dateFormat: 'yy'});
+													      });
+													   </script>
+				                                    <input type="date" required id="date" th:field="*{annee}" class="form-control" placeholder="YYYY" >
+				                                     <span th:if="${#fields.hasErrors('annee')}" th:errors="*{annee}" style="color: 
+				red"  class="item fieldinvalid"></span>
+				                                    <div class="form-control-icon">
+				                                        <i data-feather="number"></i>
+				                                    </div>
+				                                </div>
+				                            </div>
+				                        </div>
+				                                 
+				                       
+				                    
+				                    </div>
+				                </div>
+				        
+						        <div class="modal-footer">
+						        
+							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+							        <button type="submit"  class="btn btn-primary me-1 mb-1">Sauvegarder</button>
+						        
+						      	</div>
+				          
+				          
+				        	</form>
+				      	</div>
+				      
+						</div>
+					</div>
+				</div>
+				
+				
+				
+			</div>
+			
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		
+		
+		
+		
+		
+		</section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  
+  
+  						
+  <script>
+  $('#addModal').on('hidden.bs.modal', function () {
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+    $('body').css('overflow', 'auto');
+
+    // Add the new style tag
+    var style = document.createElement("style");
+    style.innerHTML = ".modal-open { overflow: auto; }";
+    document.head.appendChild(style);
+  });
+</script>
+
+<!-- <script>
+
+$('document').ready(function() {
+
+	$('.table .edit').on('click', function(){
+		var href= $(this).attr('href');
+		
+		$.get(href, function(ficheProjet, status){
+	   // var nomProjet = $(this).data('idEdit');
+	   // var description = $(this).data('descriptionEdit');
+	   // var coutGlobal = $(this).data('coutEdit');
+	   // var descSynthetique = $(this).data('descSynEdit');
+	    
+	    
+	    
+	    $('#idEdit').val(ficheProjet.nomProjet);
+	    $('#descriptionEdit').val(ficheProjet.description);
+	    $('#coutEdit').val(ficheProjet.coutGlobal);
+		$('#descSynEdit').val(ficheProjet.descSynthetique);
+	    
+	});
+		
+		$('#edit').modal('show');
+	  /* var nomProjet= $(this).closest("tr").find(".nomProjet").text();
+	  var description= $(this).closest("tr").find(".description").text();
+	  var coutGlobal= $(this).closest("tr").find(".coutGlobal").text(); 
+	  var descSynthetique= $(this).closest("tr").find(".descSynthetique").text(); 
+	  $('#edit').modal('show');
+	  $('#idEdit').val(nomProjet);
+	  $('#descriptionEdit').val(description);
+	  $('#coutEdit').val(coutGlobal);
+	  $('#descSynEdit').val(descSynthetique); */
+	  
+	  
+	  
+	  
+	
+	
+/*  $('#edit').on('show.bs.modal', function () {
+	    var nomProjet= $('#nomProjet').text();
+	    var description= $('#description').text();
+	    var coutGlobal= $('#coutGlobal').text(); // get lastname
+
+	    var descSynthetique= $('#descSynthetique').text(); //get address
+	    
+	    $('#edit').modal('show');
+	    
+	    $('#idEdit').val(nomProjet);
+	    $('#descriptionEdit').val(description);
+	    $('#coutEdit').val(coutGlobal);
+		$('#descSynEdit').val(descSynthetique);
+	    
+	}); */
+
+	
+	});
+});
+
+</script> -->
+
+<!-- <script>
+/*   $('#editModal').on('hidden.bs.modal', function () {
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+    $('body').css('overflow', 'auto'); */
+    
+    
+    
+    
+    
+    // edit 
+    
+   // var href = $(this).attr('href');
+    //var form = $("#formId");
+    //var url = form.attr('action');
+   
+    
+   /*  $.get(href, function(ficheProjet, status){
+    	$('#idEdit').val(ficheProjet.nomProjet);
+		$('#descriptionEdit').val(ficheProjet.description);
+		$('#clientEdit').val(ficheProjet.client);
+		$('#etatEdit').val(ficheProjet.etatProjet);
+		$('#coutEdit').val(ficheProjet.coutGlobal);
+		$('#descSynEdit').val(ficheProjet.descSynthetique);
+		$('#typeProjEdit').val(ficheProjet.typeProjet);
+		$('#ressEdit').val(ficheProjet.ressources);		
+		});
+     */
+   
+     
+     $('document').ready(function() {
+    
+    	$(document).on('click', '.edit', function(){
+
+	var nomProjet= $('#nomProjet').text();
+    var description= $('#description').text();
+
+    var coutGlobal= $('#coutGlobal').text(); // get lastname
+
+    var descSynthetique= $('#descSynthetique').text(); //get address
+    $('#edit').modal('show');//load modal
+   // $('.modal.show').modal('show');
+
+    
+
+	
+	$('#idEdit').val(nomProjet);
+		$('#descriptionEdit').val(description);
+		//$('#clientEdit').val(client);
+		//$('#etatEdit').val(ficheProjet.etatProjet);
+		$('#coutEdit').val(coutGlobal);
+		$('#descSynEdit').val(descSynthetique);
+		//$('#typeProjEdit').val(ficheProjet.typeProjet);
+		//$('#ressEdit').val(ficheProjet.ressources);		
+		});		
+    
+    	
+
+
+
+
+
+
+    // Add the new style tag
+    /* var style = document.createElement("style");
+    style.innerHTML = ".modal-open { overflow: auto; }";
+    document.head.appendChild(style); */
+  });
+</script> -->
+
+  
+
+  <!-- Vendor JS Files -->
+  <script src="/assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="/assets/vendor/echarts/echarts.min.js"></script>
+  <script src="/assets/vendor/quill/quill.min.js"></script>
+  <script src="/assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="/assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/assets/js/main.js"></script>
+ <!--  <script src="js/projet.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  
+
+</body>
+
+</html>

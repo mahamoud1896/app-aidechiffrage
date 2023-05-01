@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/dashboard}">
+<head>
+   
+    <title>Chiffrage Aristarc</title>
+    
+</head>
+<body>
+    
+            
+<div class="main-content container-fluid" layout:fragment="content">
+
+
+
+	
+	
+	
+	<section id="basic-horizontal-layouts">
+    <div class="row match-height">
+        <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+            <h4 class="card-title">EDITEZ</h4>
+            </div>
+            <div class="card-content">
+            <div class="card-body">
+                <form class="form form-horizontal" action="#" th:action="@{/saveUser}" th:object="${user}"
+            method="post">
+                <div class="form-body">
+                    <div class="row">
+                    <div class="col-md-4">
+                        <label>USER ID</label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                        <input type="text" th:field="*{userId}" readonly="readonly" class="form-control"  placeholder="Profil Id">
+                    </div>
+                    <div class="col-md-4">
+                        <label>USERNAME</label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                        <input type="text" th:field="*{username}" readonly="readonly" class="form-control"  placeholder="">
+                    </div>
+                    <div class="col-md-4">
+                        <label>ACTIVE</label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                        <input type="text" th:field="*{active}" readonly="readonly" class="form-control"  placeholder="">
+                    </div>
+                    <div class="col-md-4">
+                        <label>PROVIDER</label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                        <input type="text" th:field="*{provider}" readonly="readonly" class="form-control"  placeholder="">
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <label>Role</label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                    
+                    	<th:block th:each="role: ${role}">
+						<input type="checkbox" th:field="*{roles}"
+							th:text="${role.roleName}" th:value="${role.id}" class="m-2" />
+						</th:block>
+                        <!-- <select th:field="*{roles}">
+                        <option value="">Select...</option>
+                        <option th:each="role : ${role}" th:value="${role.id}" th:utext="${role.roleName}"/>
+                    	</select> -->
+                    	
+                    	<!-- <select class="form-control" th:field="*{roles}" multiple="multiple" >
+                        <option th:each="role: ${role}"
+                        		th:selected="${user.roles.contains(role)}"
+                        		th:value="${role.id}" th:text="${role.roleName}"></option>
+                        
+                        
+                        <option th:each="ress : ${ressources}" th:value="${ress.id}" th:utext="${ress.prenom}"/>
+                    	</select> -->
+                    </div>
+                    
+                    
+                    
+                    
+                    <div class="col-12 d-flex justify-content-end">
+                    <a th:href="@{/listUsers}">
+                    <button type="button">Cancel</button>
+                	</a>
+                    <button type="submit">Save</button>
+                    
+                    
+                        <!-- <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
+                        <button type="reset" class="btn btn-light-secondary mr-1 mb-1">Reset</button> -->
+                    
+                    </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
+        
+    </div>
+    </section>
+	
+	
+	<!-- <h1>Editer le user</h1>
+        <br />
+        <form action="#" th:action="@{/saveUser}" th:object="${user}"
+            method="post">
+ 
+            <table border="0" cellpadding="10">
+                <tr>             
+                    <td>USER ID:</td>
+                    <td>
+                        <input type="number" th:field="*{userId}" readonly="readonly" />
+                    </td>
+                </tr>        
+                <tr>             
+                    <td>USERNAME :</td>
+                    <td>
+                        <input type="text" th:field="*{username}" />
+                    </td>
+                </tr>
+                <tr>             
+                    <td>ACTIVE :</td>
+                    <td>
+                        <input type="text" th:field="*{active}" />
+                    </td>
+                </tr>
+               
+                   
+                <tr>
+                <td>Profil Type: <span>*</span></td>
+                <td>
+                    <select th:field="*{productTypeId}">
+                        <option value="">Select...</option>
+                        <option th:each="productType : ${productTypes}" th:value="${productType.id}" th:utext="${productType.name}"/>
+                    </select>
+                    <div class="alert alert-warning" th:if="${#fields.hasErrors('productTypeId')}" th:errors="*{productTypeId}"></div>
+                </td>
+                <td>
+                     <h6>Selectionner le role</h6>
+                                    
+                                    <label class="col-4 col-form-label">Role: </label>
+									<div class="col-8">
+										<th:block th:each="role: ${listRole}">
+										<input type="checkbox" th:field="*{roles}"
+											th:text="${role.roleName}" th:value="${role.id}" class="m-2" />
+										</th:block>
+									</div>
+                    
+                </td>
+            </tr>                        
+                <tr>
+                    <td >
+                    <a th:href="@{/listUsers}">
+                    <button type="button">Cancel</button>
+                	</a>
+                    <button type="submit">Save</button> </td>
+                </tr>
+            </table>
+        </form>
+	 -->
+	
+   
+   
+</div>
+
+            
+</body>
+</html>

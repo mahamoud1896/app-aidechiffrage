@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/dashboard}">
+<head>
+   
+    <title>Chiffrage Aristarc</title>
+    
+    <link rel="stylesheet" th:href="@{/css/eror.css}" type="text/css" />
+</head>
+<body>
+    
+            
+<div class="main-content container-fluid" layout:fragment="content">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Profil</h3>
+                
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a th:href="@{/listProfil}">Profil</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Nouveau Profil</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+    <!-- Basic Horizontal form layout section start -->
+    <section id="multiple-column-form">
+    <div class="row match-height">
+        
+        <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+            <h4 class="card-title">ENREGISTRER UN NOUVEAU PROFIL</h4>
+            </div>
+            <div class="card-content">
+            <div class="card-body">
+                <form th:action="@{/saveProfil}" th:object="${profil}"
+            method="post" class="form form-horizontal">
+                <div class="form-body">
+                    <div class="row">
+                    
+                    	<div class="col-md-4">
+                            <label>ID Profil</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="number" readonly="readonly"  th:field="*{id}" class="form-control" placeholder="Id" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="number"></i>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Prestations</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="text"  th:field="*{fonction}" class="form-control" placeholder="Fonction" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="user"></i>
+                                    </div>
+                                    <div th:if="${#fields.hasErrors('fonction')}" th:errors="*{fonction}" style="color: 
+red" class="item fieldinvalid">Erreur Fonction</div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="col-md-4">
+                            <label>Cout Homme/heure</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="number"  th:field="*{coutHommeHeure}" class="form-control" placeholder="CoutHommeHeure" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="number"></i>
+                                    </div>
+                                    <div th:if="${#fields.hasErrors('coutHommeHeure')}" th:errors="*{coutHommeHeure}" style="color: 
+red"  class="item fieldinvalid">Erreur CoutHommeHeure</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Cout Homme/jour</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                    <input type="number"  th:field="*{coutHommeJour}" class="form-control" placeholder="CoutHommeJour" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="number"></i>
+                                    </div>
+                                    <div th:if="${#fields.hasErrors('coutHommeJour')}" th:errors="*{coutHommeJour}" style="color: 
+red" class="item fieldinvalid">Erreur CoutHommeJour</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Marge en %</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group has-icon-left">
+                                <div class="position-relative">
+                                
+                                	<script type="text/javascript">
+                                	$(document).ready(function(){
+                                		$("input[name='percentage']").on('input', function() {
+                                		    $(this).val(function(i, v) {
+                                		     return v.replace('%','') + '%';  });
+                                		    });
+                                		});
+                                	</script>
+                                    <input type='text' name="percentage"  th:field="*{marge}" class="form-control" placeholder="Marge" id="first-name-icon">
+                                    <div class="form-control-icon">
+                                        <i data-feather="number"></i>
+                                    </div>
+                                    <div th:if="${#fields.hasErrors('marge')}" th:errors="*{marge}" style="color: 
+red" class="item fieldinvalid">Erreur Marge</div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    <div class="col-12 d-flex justify-content-end ">
+                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                        <ul>
+                        	<li th:each="err : ${#fields.errors('*')}" th:text="${err}" style="color: red" />
+                        </ul>
+                         <a th:href="@{/listProfil}">
+                        <button type="button" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                        </a>
+                    </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+    
+</div>
+
+            
+</body>
+</html>

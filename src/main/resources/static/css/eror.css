@@ -1,0 +1,16 @@
+
+
+
+
+.item{
+	padding: 20px;
+	background: rgb(150,20,100);
+	color: white;
+	
+}
+
+.fieldinvalid{
+	
+	font-size: larger;
+	color:red;
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outil de chiffrage</title>
+    
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+    
+    
+    
+
+    <!-- <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+
+    <link rel="stylesheet" th:href="@{/css/Chart.min.css}">
+    <link rel="stylesheet" th:href="@{/css/high.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/bootstrap.css}">
+    
+    <link rel="stylesheet" th:href="@{/assets/vendors/perfect-scrollbar/perfect-scrollbar.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/app.css}">
+     <link rel="stylesheet" th:href="@{/assets/js/feather-icons/feather.min.js}">
+     
+    
+
+    <link rel="stylesheet" th:href="@{/css/perfect-scrollbar.css}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <link rel="stylesheet" th:href="@{/js/perfect-scrollbar.min.js}">
+    <link rel="stylesheet" th:href="@{/js/app.js}">
+    <link rel="stylesheet" th:href="@{/js/feather.min.js}">
+    <link rel="stylesheet" th:href="@{/js/jquery.js}">
+    <link rel="shortcut icon" th:href="@{/images/favicon.svg}" type="image/x-icon"> -->
+</head>
+
+<body>
+<div id="app"><!--Main content-->
+    <span th:replace="fragments/sidebar :: sidebar"></span>
+    <div id="main"><!--Content id-->
+        <span th:replace="fragments/header :: header">
+        	
+        </span>
+        <div class="main-content container-fluid" layout:fragment="content"><!--dynamic content-->
+        
+            <!--you can replace this using page-->
+        </div>
+                <span th:replace="fragments/footer :: footer"></span>
+    </div>
+</div>
+<script th:src="@{/assets/js/feather-icons/feather.min.js}"></script>
+<script th:src="@{/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+<script th:src="@{/assets/vendors/perfect-scrollbar/perfect-scrollbar.css}"></script>
+
+<script th:src="@{/js/perfect-scrollbar.min.js}"></script>
+<script th:src="@{/js/app.js}"></script>
+
+<script th:src="@{/js/Chart.min.js}"></script>
+<script th:src="@{/js/apexcharts.min.js}"></script>
+<script th:src="@{/js/dashboard.js}"></script>
+<script th:src="@{/js/cust.js}"></script>
+<!-- <script th:src="@{/js/feather.min.js}"></script> -->
+<!-- <script th:src="@{/js/perfect-scrollbar.min.js}"></script> -->
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/funciones.js}"></script>
+<script th:src="@{/funciones.js}"></script>
+<script th:src="@{js/highcharts.js}"></script>
+	<script th:src="@{/js/jquery.js}"></script>
+	<script th:src="@{/js/index.js}"></script>
+<script th:src="@{https://code.jquery.com/jquery-3.4.1.js}"></script>
+<script th:src="@{https://cdn.jsdelivr.net/npm/chart.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js}"></script>
+<script th:src="@{https://code.highcharts.com/highcharts.js}"></script>
+<script th:src="@{https://code.highcharts.com/modules/exporting.js}"></script>
+
+    <script th:src="@{/assets/js/app.js}"></script>
+    
+    
+    
+    
+    
+    
+    
+   <!-- ======= Footer ======= -->
+  
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+    
+    
+    
+
+    
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/dashboard}">
+<head>
+    
+    <title>Chiffrage Aristarc</title>
+    <link rel="shortcut icon" href="assets/images/logo_ARISTARC.png" type="image/x-icon">
+    
+</head>
+<body>
+    
+            
+<div class="main-content container-fluid" layout:fragment="content">
+
+	<div class="box-footer center">
+                        <a th:href="@{/newAct}">
+                            <button type="button" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add new</button>
+                        </a>
+                        
+                        <!--<form th:action="@{/product/list}" method="get">
+                            <input type="search" th:value="${param.search}" name='search' placeholder="search">
+                            <button type="submit">Search</button>
+                        </form>-->
+                    </div>
+   
+   
+   <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="card-title">LISTE DES ACTIVITES</h4>
+                    <div class="d-flex ">
+                        <i data-feather="download"></i>
+                    </div>
+                </div>
+                
+                
+                <div class="row" id="table-striped-dark">
+				  <div class="col-12">
+				    <div class="card">
+                
+                
+                <!-- <div class="card-body px-0 pb-0"> -->
+                    <div class="table-responsive">
+                        <table class="table table-striped table-dark mb-0" >
+                            <thead>
+                            
+                            <tr>
+                                <th>ID Activite</th>
+                                <th>Type d'activte</th>
+                                <th>Titre</th>
+                                <th>Nombre de joursHomme Consommes</th>
+                                <th>Nombre de joursHomme Prevus</th>
+                                <th>Cout</th>
+                                <!-- <th>Duree</th> -->
+                                <!-- <th>Description</th> -->
+                                <th>Date de création</th>
+                               
+                               <!--  <th>Ressources</th> -->
+                                
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="projet : ${activite}" >
+				                <td th:text="${projet.id}"> ID</td>
+				                <td th:text="${projet.typeActivite.nomActivite}">Type</td>
+				                <td th:text="${projet.titre}">Num</td>
+				                <td th:text="${projet.joursHommeConsommes}">NombreJoursHomme</td>
+				                <td th:text="${projet.joursHommePrevus}">NombreJoursHomme</td>
+				                <td th:text="${projet.cout}">Cout</td>
+				                <!-- <td th:text="${projet.duree}">Duree</td> -->
+				                <!-- <td th:text="${projet.description}">DESC</td> -->
+				                <td th:text="${#dates.format(projet.dateCreation, 'dd/MM/yyyy')}">Date</td>
+				                
+				              
+				                
+				                <td>
+				                    <a href="#"  th:href="@{'/editAct/' + ${projet.id}}"><i data-feather="edit"></i></a>
+				                    &nbsp;&nbsp;&nbsp;
+				                    <a href="#" th:onclick="checker()" class="btn icon btn-danger" th:href="@{'/deleteAct/' + ${projet.id}}"><i data-feather="delete"></i></a>
+				                     
+				                </td>
+				            </tr>
+                            </tbody>
+                        </table>
+                        <script type="text/javascript">
+                    	function checker(){
+                    		var result = confirm('Are you sure?');
+                    		
+                    		if(result == false){
+                    			event.preventDefault();
+                    		}
+                    	}
+                    </script> 
+                    </div>
+                    
+                    
+                    </div>
+                    </div>
+                    </div>
+                    
+                    
+                    
+                    
+                <!-- </div> -->
+            </div>
+   
+   
+</div>
+
+            
+</body>
+</html>

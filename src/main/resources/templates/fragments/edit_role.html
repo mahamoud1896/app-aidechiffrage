@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/dashboard}">
+<head>
+   
+    <title>Chiffrage Aristarc</title>
+    
+</head>
+<body>
+    
+            
+<div class="main-content container-fluid" layout:fragment="content">
+
+	
+	<section id="basic-horizontal-layouts">
+    <div class="row match-height">
+        <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+            <h4 class="card-title">EDITER LE PROFIL</h4>
+            </div>
+            <div class="card-content">
+            <div class="card-body">
+                <form class="form form-horizontal" action="#" th:action="@{/saveRole}" th:object="${role}"
+            method="post">
+                <div class="form-body">
+                    <div class="row">
+                    <div class="col-md-4">
+                        <label>Role ID</label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                        <input type="text" th:field="*{id}" readonly="readonly" class="form-control"  placeholder="Profil Id">
+                    </div>
+                    <div class="col-md-4">
+                        <label>Description</label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                        <input type="text" th:field="*{roleName}" class="form-control"  placeholder="Fonction">
+                    </div>
+                    
+                    
+                    
+                    
+                    <div class="col-12 d-flex justify-content-end">
+                    <a th:href="@{/listRoles}">
+                    <button type="button">Cancel</button>
+                	</a>
+                    <button type="submit">Save</button>
+                    
+                    
+                        <!-- <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
+                        <button type="reset" class="btn btn-light-secondary mr-1 mb-1">Reset</button> -->
+                    
+                    </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
+        
+    </div>
+    </section>
+	
+	<!-- <h1>Editer le role</h1>
+        <br />
+        <form action="#" th:action="@{/saveRole}" th:object="${role}"
+            method="post">
+ 
+            <table border="0" cellpadding="10">
+                <tr>             
+                    <td>ROLE ID:</td>
+                    <td>
+                        <input type="number" th:field="*{id}" readonly="readonly" />
+                    </td>
+                </tr>        
+                <tr>             
+                    <td>Role :</td>
+                    <td>
+                        <input type="text" th:field="*{roleName}" />
+                    </td>
+                </tr>
+               
+                   
+                <tr>
+                <td>Profil Type: <span>*</span></td>
+                <td>
+                    <select th:field="*{productTypeId}">
+                        <option value="">Select...</option>
+                        <option th:each="productType : ${productTypes}" th:value="${productType.id}" th:utext="${productType.name}"/>
+                    </select>
+                    <div class="alert alert-warning" th:if="${#fields.hasErrors('productTypeId')}" th:errors="*{productTypeId}"></div>
+                </td>
+                <td>
+                     <h6>Selectionner le privilège</h6>
+                                    
+                                    <label class="col-4 col-form-label">Action: </label>
+									<div class="col-8">
+										<th:block th:each="action: ${listAction}">
+										<input type="checkbox" th:field="*{actions}"
+											th:text="${action.actionName}" th:value="${action.id}" class="m-2" />
+										</th:block>
+									</div>
+                    
+                </td>
+            </tr>                        
+                <tr>
+                    <td >
+                    <a th:href="@{/listRoles}">
+                    <button type="button">Cancel</button>
+                	</a>
+                    <button type="submit">Save</button> </td>
+                </tr>
+            </table>
+        </form> -->
+	
+	
+   
+   
+</div>
+
+            
+</body>
+</html>

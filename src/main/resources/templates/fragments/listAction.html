@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/dashboard}">
+<head>
+   
+    <title>Action List</title>
+    
+    
+</head>
+<body>
+    
+
+<div class="main-content container-fluid" layout:fragment="content">  
+
+	<div class="box-footer center">
+                        <a th:href="@{/newAction}">
+                            <button type="button" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add new</button>
+                        </a>
+                        <!--<form th:action="@{/product/list}" method="get">
+                            <input type="search" th:value="${param.search}" name='search' placeholder="search">
+                            <button type="submit">Search</button>
+                        </form>-->
+                    </div>
+   
+   
+   <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="card-title">LISTE DES ACTIONS</h4>
+                    <div class="d-flex ">
+                        <i data-feather="download"></i>
+                    </div>
+                </div>
+                <div class="card-body px-0 pb-0">
+                    <div class="table-responsive">
+                        <table class='table mb-0' id="table1">
+                            <thead>
+                            <tr>
+                                <th>ID Action</th>
+                                <th>Action</th>
+                               
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="action : ${action}">
+				                <td th:text="${action.id}">Action ID</td>
+				                <td th:text="${action.actionName}">Action</td>
+				               
+				                
+				                <td>
+				                    <a href="#"  th:href="@{'/editAction/' + ${action.id}}"><i data-feather="edit"></i>Edit</a>
+				                    &nbsp;&nbsp;&nbsp;
+				                    <a href="#"  th:href="@{'/deleteAction/' + ${action.id}}"><i data-feather="delete"></i>Delete</a>
+				                </td>
+				            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+   
+   
+</div>
+
+</body>
+</html>

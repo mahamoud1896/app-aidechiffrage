@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/dashboard}">
+<head>
+   
+    <title>Chiffrage Aristarc</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    
+    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="shortcut icon" href="assets/images/logo_ARISTARC.png" type="image/x-icon">
+    
+    
+</head>
+<body>
+
+    
+            
+<div class="main-content container-fluid" layout:fragment="content">
+
+	
+	<div sec:authorize="isAuthenticated()" class="text-center p-3">
+		<form th:action="@{/logout}" method="post">
+			Welcome <b><span sec:authentication="name">Username</span></b>
+			&nbsp;
+			<input type="submit" value="Logout" />
+		</form>
+	</div>
+	
+
+	<div class="box-footer center">
+                        <a th:href="@{/listProj}">
+                            <button type="button" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Retour</button>
+                        </a>
+                        <!-- <a th:href="@{/listProj/exportProfil}">
+                            <button type="button" class="btn btn-primary pull-right"><i data-feather="download"></i> Export to PDF</button>
+                        </a> -->
+                        
+                        <!--<form th:action="@{/product/list}" method="get">
+                            <input type="search" th:value="${param.search}" name='search' placeholder="search">
+                            <button type="submit">Search</button>
+                        </form>-->
+                    </div>
+   
+   
+   <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="card-title">FICHE DEVALUATION DES CHARGES ET CHIFFRAGE DE PROJET</h4>
+                    <div sec:authorize="isAuthenticated()">
+                        <b><span sec:authentication="name"></span></b>
+                    </div>
+                </div>
+               
+                <div class="row" >
+				  <div class="col-12">
+				    <div class="card">
+				    
+                    <div  class="table-responsive">
+                        <!-- <table class="table table-striped table-dark mb-0" id="table1" > -->
+                        <table class="table table-striped table-bordered table-hover mb-0">
+                        
+                        
+                        	 <TR  bgcolor="bbbbbb">
+							        <TH colspan="4">Projet: <label th:text="${ficheProj.nomProjet}"></label>
+							        <TH colspan="1">Nom du client: <label th:text="${ficheProj.client.nomClient}"></label>
+							    <TR  bgcolor="eeeeee">
+							        <TH >Taches
+							        <TH>Intervenant
+							        <TH>Duree
+							        <TH>Cout/jours
+							        <TH>Total
+							    <TR>
+							        <TD >Charte graphique
+							        <TD>Therese
+							        <TD>2
+							        <TD>600
+							        <TD>1200
+							        
+							     <TR>
+							        <TD >DESIGN
+							        <TD>Adja
+							        <TD>1
+							        <TD>1000
+							        <TD>1000
+							      
+							      <TR>
+							        <TD >Developpement web
+							        <TD>Junior
+							        <TD>3
+							        <TD>1000
+							        <TD>3000
+							    
+							        
+							    <TR>
+							    	<TH>Total
+                            
+                        </table>
+                        
+                    </div>
+                    
+                    
+                    </div>
+                    </div>
+                    
+                    
+                   
+                    
+                    
+                    
+                    
+                
+            </div>
+            
+            
+   
+   
+</div>
+</div>
+
+
+		
+
+
+		 <script type="text/javascript">
+                    	function checker(){
+                    		var result = confirm('Are you sure?');
+                    		
+                    		if(result == false){
+                    			event.preventDefault();
+                    		}
+                    	}
+                    </script> 
+                    
+                    
+                    
+
+					<script th:src="@{https://code.jquery.com/jquery-3.4.1.js}"></script>
+					<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+					<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> -->
+					<script th:src="@{https://unpkg.com/sweetalert/dist/sweetalert.min.js}"></script>
+					<script th:src="@{/funciones.js}"></script>
+
+            
+</body>
+</html>
