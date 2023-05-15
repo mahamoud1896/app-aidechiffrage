@@ -506,7 +506,7 @@ public class ChiffrageTestController {
 	    	model.addAttribute("delaiprojetss", projetLists);
 	    	model.addAttribute("delaiprojets", ficheProjetRepository.getMontantByOffres());
 	    	
-	    	model.addAttribute("annee", objectifAnnuelRepository.anneeObjectif());
+	    	//model.addAttribute("annee", objectifAnnuelRepository.anneeObjectif());
 	    	//model.addAttribute("pourcent", ressActiviteRepository.dureeMoyen());
 	    	model.addAttribute("pourcent", (ficheProjetRepository.pourcentageObjectif()/objectifAnnuelRepository.objectifAnn()*100));
 	    	model.addAttribute("pourcentRestant", (100-(ficheProjetRepository.pourcentageObjectif()/objectifAnnuelRepository.objectifAnn())*100));

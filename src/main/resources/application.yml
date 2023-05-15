@@ -10,6 +10,16 @@ spring:
       ddl-auto: update
     show-sql: true
   
-  
+  security:
+    oauth2:
+      client:
+        registration:
+         google:
+          clientId: 228081781783-np1ph6qspborldpcmimkvd7bnfe3tr9p.apps.googleusercontent.com
+          clientSecret: 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
+          redirect-uri: "http://localhost:8082/login/oauth2/code/google"
+          scope:
+           - email
+           - profile
   
 
